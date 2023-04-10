@@ -26,7 +26,7 @@ const statusColors: { [key: string]: string } = {
 
 const CardView = (character: Character, index: number) => {
   return (
-    <Grid item xs={12} sm={6} md={3} key={character.id}>
+    <Grid item xs={12} sm={6} md={4} key={character.id}>
       <CardWrapper>
         <CardMediaWrapper
           image={character.image}

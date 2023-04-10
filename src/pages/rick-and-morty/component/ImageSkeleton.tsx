@@ -1,21 +1,51 @@
-import * as React from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 
-const ImageSkeleton = ({ loading }: { loading: boolean }) => {
+const ImageSkeleton = () => {
   return (
-    <Grid container wrap="nowrap">
-      {Array.from(new Array(4)).map((index: number) => (
-        <Box key={index} sx={{ width: 280, marginRight: 0.5, my: 5 }}>
-          <Skeleton variant="rectangular" width={280} height={155} />
-          <Box sx={{ pt: 0.5 }}>
-            <Skeleton width="60%" />
-            <Skeleton width="60%" />
-            <Skeleton /> <Skeleton />
-          </Box>
-        </Box>
-      ))}
+    <Grid container spacing={2} sx={{ marginTop: 2 }}>
+      <Grid item xs={12} sm={6} md={4}>
+        <Skeleton variant="rectangular" height={210} />
+        <Skeleton width="60%" />
+        <Skeleton width="60%" />
+        <Skeleton /> <Skeleton />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4}>
+        <Skeleton variant="rectangular" height={210} />
+        <Skeleton width="60%" />
+        <Skeleton width="60%" />
+        <Skeleton /> <Skeleton />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4}>
+        <Skeleton variant="rectangular" height={210} />
+        <Skeleton width="60%" />
+        <Skeleton width="60%" />
+        <Skeleton /> <Skeleton />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4}>
+        <Skeleton variant="rectangular" height={210} />
+        <Skeleton width="60%" />
+        <Skeleton width="60%" />
+        <Skeleton /> <Skeleton />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4}>
+        <Skeleton variant="rectangular" height={210} />
+        <Skeleton width="60%" />
+        <Skeleton width="60%" />
+        <Skeleton /> <Skeleton />
+      </Grid>
+
+      <Grid item xs={12} sm={6} md={4}>
+        <Skeleton variant="rectangular" height={210} />
+        <Skeleton width="60%" />
+        <Skeleton width="60%" />
+        <Skeleton /> <Skeleton />
+      </Grid>
     </Grid>
   );
 };
