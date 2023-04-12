@@ -23,8 +23,25 @@ export const getCharactersRickMorty = () => {
                       name
                       status
                       species
+                      created
                       gender
                       image
+                      location{
+                        id
+                        name
+                        type
+                        dimension
+                      }
+                      origin{
+                        id
+                        name
+                      }
+                      type
+                      episode{
+                        id
+                        name
+                        episode
+                      }
                     }
                   }
                 }

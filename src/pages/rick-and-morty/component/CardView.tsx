@@ -1,54 +1,89 @@
 import React from "react";
 import { Grid, Card, CardContent, CardMedia, Typography } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import { Character } from "../type/CharacterTypes";
-import StatusIcon from "./StatusIcon";
+import CardActions from "@mui/material/CardActions";
+import WomanIcon from "@mui/icons-material/Woman";
+import ManIcon from "@mui/icons-material/Man";
+import NoAccountsIcon from "@mui/icons-material/NoAccounts";
 import { green, yellow, red } from "@mui/material/colors";
-
-const CardWrapper = styled(Card)({
-  display: "flex",
-  flexDirection: "column",
-});
-
-const CardMediaWrapper = styled(CardMedia)({
-  paddingTop: "56.25%",
-});
-
-const CardContentWrapper = styled(CardContent)({
-  flexGrow: 1,
-});
-
-const statusColors: { [key: string]: string } = {
-  Alive: green[500],
-  Dead: red[500],
-  unknown: yellow[500],
-};
-
 const CardView = (character: Character, index: number) => {
+  const statusColors: { [key: string]: string } = {
+    Alive: green[500],
+    Dead: red[500],
+    unknown: yellow[500],
+  };
+
+  const statusGender: { [key: string]: any } = {
+    Female: (
+      <WomanIcon
+        sx={{
+          bgcolor: "#b39ddb",
+          borderRadius: 5,
+          p: 0.5,
+          mb: -1,
+          color: "white",
+        }}
+      />
+    ),
+    Male: (
+      <ManIcon
+        sx={{
+          bgcolor: "#80d8ff",
+          borderRadius: 5,
+          mb: -1,
+          p: 0.5,
+          color: "white",
+        }}
+      />
+    ),
+    unknown: (
+      <NoAccountsIcon
+        sx={{
+          bgcolor: "#b0bec5",
+          borderRadius: 5,
+          mb: -1,
+          p: 0.5,
+          color: "white",
+        }}
+      />
+    ),
+  };
+
   return (
-    <Grid item xs={12} sm={6} md={4} key={character.id}>
-      <CardWrapper>
-        <CardMediaWrapper
+    <Grid item key={index} xs={12} sm={6} md={4}>
+      <Card
+        sx={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <CardMedia
+          component="img"
           image={character.image}
-          title={character.name}
-          style={{ maxHeight: 140 }}
+          alt={character.name}
         />
-        <CardContentWrapper>
-          <Typography variant="h5">
-            <StatusIcon color={statusColors[character.status]} />
+        <CardContent sx={{ flexGrow: 1 }}>
+          <Typography gutterBottom variant="h5" component="h2">
             {character.name}
           </Typography>
-          <Typography variant="body2" color={statusColors[character.status]}>
-            <p> {character.status}</p>
+          <Typography>
+            <p>
+              gender: {character.gender} {statusGender[character.gender]}
+            </p>
+            <p>count of episode : {character.episode?.length}</p>
+            {character.location.dimension && (
+              <p>location: {character.location.dimension}</p>
+            )}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <p>Species: {character.species}</p>
+        </CardContent>
+        <CardActions>
+          <Typography color={statusColors[character.status]}>
+            {character.status}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <p>Gender: {character.gender}</p>
-          </Typography>
-        </CardContentWrapper>
-      </CardWrapper>
+          <Typography>{character.species}</Typography>
+        </CardActions>
+      </Card>
     </Grid>
   );
 };
